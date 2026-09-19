@@ -27,10 +27,11 @@ jobs:
     - name: Download Recovery Image
       run: |
           megadl "https://mega.nz"
-   
+          mv *.*img recovery.img 2>/dev/null || true
+
     - name: Start build
       run: |
-          python3 -m twrpdtgen -o dt/ *.img
+          python3 -m twrpdtgen -o dt/ recovery.img
 
     - name: ZIP device tree
       run: |
