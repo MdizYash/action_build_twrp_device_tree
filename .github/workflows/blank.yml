@@ -26,12 +26,8 @@ jobs:
 
     - name: Download Recovery Image
       run: |
-          if [[ "${{ github.event.inputs.version }}" == *mega.nz* ]]; then
-            megadl "${{ github.event.inputs.version }}"
-          else
-            wget -O recovery.img "${{ github.event.inputs.version }}"
-          fi
-
+          megadl "https://mega.nz"
+   
     - name: Start build
       run: |
           python3 -m twrpdtgen -o dt/ *.img
